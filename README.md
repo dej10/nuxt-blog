@@ -1,5 +1,7 @@
 # nuxt-blog
 
+A nuxt version of [vue-blog](https://github.com/dej10/vue-blog)
+
 ## Build Setup
 
 ```bash
