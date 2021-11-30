@@ -7,14 +7,8 @@
             <nuxt-link to="/"> Home </nuxt-link>
           </a>
           <a class="navbar-item">
-            <nuxt-link to="/"> Compose </nuxt-link>
+            <nuxt-link to="/compose"> Compose </nuxt-link>
           </a>
-        </div>
-
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons" />
-          </div>
         </div>
       </div>
     </nav>

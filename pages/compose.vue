@@ -1,47 +1,36 @@
 <template>
-  <div id="postForm">
-    <h1>Compose</h1>
-    <form method="post" autocomplete="off" @submit.prevent="submitPost">
-      <div class="title-input">
-        <label for="title">Title</label>
-        <input
-          id="title"
-          v-model="blogTitle"
-          class="title-input"
-          cols="150"
-          type="text"
-          name="blogTitle"
-          placeholder=""
-          required
-        >
-      </div>
-      <div class="">
-        <label for="posts">Post</label>
-        <textarea
-          id="posts"
-          v-model="blogBody"
-          class="title-input"
-          name="blogPost"
-          rows="5"
-          cols="30"
-          required
-        />
-      </div>
-      <button class="btn" type="submit">
-        Publish
-      </button>
-    </form>
-    <h2 v-show="IsActive">
-      User Posts
-    </h2>
+  <div>
     <div>
-      <h5>{{ blogs.title }}</h5>
-      <p>
-        <em>{{ blogs.body }}</em>
-        <button v-show="isActive" @click="onUpdate">
-          edit
-        </button>
-      </p>
+      <NavBar />
+      <h1 class="title">
+        Compose
+      </h1>
+    </div>
+    <div class="container">
+      <div class="field">
+        <label class="label">Title</label>
+        <div class="control">
+          <input
+            v-model="blogTitle"
+            class="input"
+            type="text"
+            placeholder="Text input"
+          >
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Post</label>
+        <div class="control">
+          <textarea id="" v-model="blogBody" />
+
+          <div>
+            <button class="button" type="submit">
+              Publish
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -101,11 +90,11 @@ export default {
 </script>
 
 <style>
-name-input {
-  align-content: left;
-  padding-bottom: 10px;
+h1 {
+  text-align: center;
+  padding-top: 30px;
 }
-btn {
-  padding-top: 10%;
+button {
+  margin-top: 20px;
 }
 </style>

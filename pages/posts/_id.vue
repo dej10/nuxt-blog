@@ -5,16 +5,17 @@
       Post Details
     </h1>
     <div class="post">
-      <h2 class="title is-3">
+      <h2 class="title is-4">
         {{ post.title }}
       </h2>
-      <p class="title is-5">
+      <p class="subtitle">
         {{ post.body }}
       </p>
     </div>
-    <button @click="showComments">
+    <button class="button" @click="showComments">
       Show Comments
-    </button> |
+    </button>
+
     <div
       v-for="comment in comments"
       :key="comment.body"
@@ -26,7 +27,7 @@
         <li>{{ comment.body }}</li>
       </ul>
     </div>
-    <button @click="hideComments">
+    <button class="button" @click="hideComments">
       Hide Comments
     </button>
   </div>
@@ -81,5 +82,9 @@ export default {
 button {
   text-align: justify;
   margin-bottom: 5px;
+  margin-top: 20px;
+}
+h2 {
+  padding-bottom: 20px;
 }
 </style>
