@@ -16,7 +16,11 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { type: 'stylesheet', href: './assets/css' }
+      { type: 'stylesheet', href: './assets/css' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Oxygen&display=swap'
+      }
     ]
   },
 
@@ -24,7 +28,7 @@ export default {
   css: ['./assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['./plugins/components.js'],
+  plugins: ['./plugins/components.js', './plugins/simple-validator.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

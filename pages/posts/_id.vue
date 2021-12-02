@@ -1,35 +1,41 @@
 <template>
-  <div class="container">
-    <NavBar />
-    <h1 class="title is-3">
-      Post Details
-    </h1>
-    <div class="post">
-      <h2 class="title is-4">
-        {{ post.title }}
-      </h2>
-      <p class="subtitle">
-        {{ post.body }}
-      </p>
+  <div id="full">
+    <div class="container">
+      <NavBar />
     </div>
-    <button class="button" @click="showComments">
-      Show Comments
-    </button>
 
-    <div
-      v-for="comment in comments"
-      :key="comment.body"
-      class="comments"
-      :v-if="isActive"
-    >
-      <span>{{ comment.email }} says...</span>
-      <ul>
-        <li>{{ comment.body }}</li>
-      </ul>
+    <div id="form-top" class="container">
+      <h1 class="title is-3">
+        <em> .. the rest of the post</em>
+      </h1>
+      <div class="post">
+        <h2 class="title is-4">
+          {{ post.title }}
+        </h2>
+        <p class="subtitle">
+          {{ post.body }}
+        </p>
+      </div>
+      <button class="button" @click="showComments">
+        Show Comments
+      </button>
+
+      <div
+        v-for="comment in comments"
+        :key="comment.body"
+        class="comments"
+        :v-if="isActive"
+      >
+        <span>
+          <a href="">{{ comment.email }}</a> says...</span>
+        <ul>
+          <li>{{ comment.body }}</li>
+        </ul>
+      </div>
+      <button class="button" @click="hideComments">
+        Hide Comments
+      </button>
     </div>
-    <button class="button" @click="hideComments">
-      Hide Comments
-    </button>
   </div>
 </template>
 
@@ -86,5 +92,11 @@ button {
 }
 h2 {
   padding-bottom: 20px;
+}
+#full {
+  background-color: #faedf0;
+}
+.form-top {
+  background-color: white;
 }
 </style>

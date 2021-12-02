@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div class="container">
-      <NavBar />
-    </div>
     <div>
       <home />
     </div>
@@ -11,5 +8,6 @@
 
 <script>
 import home from './home.vue'
+
 export default { components: { home } }
 </script>
