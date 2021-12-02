@@ -118,7 +118,7 @@ export default {
             this.$isLoading(false)
           })
           .catch(err => console.log(err))
-      }, 1500)
+      }, 1600)
     },
     submit () {
       // if (this.changeText !== 'Publish') {
