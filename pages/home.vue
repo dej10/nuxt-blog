@@ -76,7 +76,7 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a class="card-footer-item">
+          <a target="_blank" rel="noreferrer noopener" class="card-footer-item">
             <nuxt-link :to="'/posts/' + post.id">Read More</nuxt-link>
           </a>
           <a class="card-footer-item" @click="editPost(post.id)">Edit</a>
@@ -102,15 +102,24 @@ export default {
     }
   },
   mounted () {
-    this.$axios
-      .get('https://jsonplaceholder.typicode.com/posts')
-      .then((response) => {
-        this.postDetails = response.data
-      })
-      .catch(err => console.log(err))
+    this.getData()
   },
 
   methods: {
+    getData () {
+      this.$isLoading(true)
+      setTimeout(() => {
+        this.$axios
+          .get('https://jsonplaceholder.typicode.com/posts')
+          .then((response) => {
+            this.postDetails = response.data
+          })
+          .finally(() => {
+            this.$isLoading(false)
+          })
+          .catch(err => console.log(err))
+      }, 1500)
+    },
     submit (event) {
       // if (this.changeText !== 'Publish') {
       //   return this.updatePost(this.post.id)
@@ -134,8 +143,8 @@ export default {
         })
         .then((response) => {
           this.postDetails.push(response.data)
-          this.clearForm()
           this.$toast.success('Submitted')
+          this.clearForm()
         })
         .catch(err => console.log(err))
     },
@@ -159,14 +168,13 @@ export default {
       this.blogBody = ''
       this.blogTitle = ''
       this.changeText = 'Publish'
-      this.$validate().reset()
     },
     deletePost (postId) {
       this.$axios
         .delete('https://jsonplaceholder.typicode.com/posts/' + postId)
         .then(() => {
           this.postDetails = this.postDetails.filter(post => post.id !== postId)
-          this.clearForm()
+          // this.clearForm()
           this.$toast.success('Deleted')
         })
     },
@@ -191,7 +199,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 h1 {
   text-align: center;
   padding-top: 30px;

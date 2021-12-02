@@ -18,7 +18,8 @@
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
     "simple-vue-validator": "^0.16.0",
-    "vue-toast-notification": "0.6.2"
+    "vue-toast-notification": "0.6.2",
+    "vuejs-loading-screen": "^1.10.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",

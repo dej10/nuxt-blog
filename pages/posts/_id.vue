@@ -1,9 +1,5 @@
 <template>
   <div id="full">
-    <div class="container">
-      <NavBar />
-    </div>
-
     <div id="form-top" class="container">
       <h1 class="title is-3">
         <em> .. the rest of the post</em>
@@ -49,14 +45,24 @@ export default {
     }
   },
   created () {
-    this.$axios
-      .get(
-        'https://jsonplaceholder.typicode.com/posts/' + this.$route.params.id
-      )
-      .then(response => response.data)
-      .then(data => (this.post = data))
+    this.getData()
   },
   methods: {
+    getData () {
+      this.$isLoading(true)
+      setTimeout(() => {
+        this.$axios
+          .get(
+            'https://jsonplaceholder.typicode.com/posts/' +
+              this.$route.params.id
+          )
+          .then(response => response.data)
+          .then(data => (this.post = data))
+          .finally(() => {
+            this.$isLoading(false)
+          })
+      }, 1000)
+    },
     showComments () {
       this.isActive = true
 
@@ -78,7 +84,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .comments {
   text-align: left;
   padding-top: 20px;
@@ -87,16 +93,14 @@ export default {
 }
 button {
   text-align: justify;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   margin-top: 20px;
 }
 h2 {
   padding-bottom: 20px;
 }
 #full {
+  width: 100%;
   background-color: #faedf0;
-}
-.form-top {
-  background-color: white;
 }
 </style>
