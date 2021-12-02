@@ -42,16 +42,16 @@
               </div>
 
               <div>
-                <button class="button" type="submit" @click="submit">
+                <button class="button" type="submit">
                   {{ changeText }}
-                </button>
-                <button class="button" type="submit" @click="clearForm">
-                  Clear
                 </button>
               </div>
             </div>
           </div>
         </form>
+        <button class="button edt-btn" type="submit" @click="clearForm">
+          Clear
+        </button>
       </div>
 
       <p class="title left-post">
@@ -120,15 +120,14 @@ export default {
           .catch(err => console.log(err))
       }, 1500)
     },
-    submit (event) {
+    submit () {
       // if (this.changeText !== 'Publish') {
       //   return this.updatePost(this.post.id)
       // }
       // return this.addPost()
-      event.preventDefault()
       this.$validate().then(function (success) {
         if (success) {
-          console.log('Validation succeeded!')
+          // console.log('Validation succeeded!')
         }
       })
       return this.addPost()
@@ -174,8 +173,8 @@ export default {
         .delete('https://jsonplaceholder.typicode.com/posts/' + postId)
         .then(() => {
           this.postDetails = this.postDetails.filter(post => post.id !== postId)
-          // this.clearForm()
-          this.$toast.success('Deleted')
+          this.clearForm()
+          this.$toast.error('Deleted')
         })
     },
 
@@ -240,5 +239,8 @@ textarea {
   margin-left: 100px;
   margin-right: 100px;
   margin-bottom: 20px;
+}
+.edt-btn {
+  margin-left: 70px;
 }
 </style>
