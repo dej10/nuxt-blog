@@ -21,6 +21,13 @@ export default {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Oxygen&display=swap'
       }
+    ],
+    script: [
+      {
+        src: '/new-relic.js',
+        type: 'text/javascript',
+        body: true
+      }
     ]
   },
 
